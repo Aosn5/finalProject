@@ -23,7 +23,7 @@ for (let i = 0; i < sectionList.length; i++) {
 
 } 
 // Get all the navbar list and links
-const sections = document.querySelectorAll('navbar__list');
+const sections = document.querySelectorAll('section');
 const aLinks = document.querySelectorAll('.menu__link');
 
 aLinks.forEach((aLink) => {
@@ -53,7 +53,11 @@ window.addEventListener('scroll', () => {
         sections[i].getBoundingClientRect().bottom >= 150
     ){
         sections[i].classList.add('your-active-class');
-       //Add active state and section to corresponding nav link
+       //Add active state and 
+       document.querySelectorAll('.nav-active').forEach((link) => {
+        link.classList.remove('nav-active');
+     });
+     //section to corresponding nav link
         const sectionId = `#section${i + 1}`;
         const navLink = document.querySelector(`a[href="${sectionId}"]`);
         navLink.classList.add('nav-active');
@@ -63,8 +67,7 @@ window.addEventListener('scroll', () => {
       //Remove active state and section to corresponding nav link
       const sectionId = `#section${i + 1}`;
       const navLink = document.querySelector(`a[href="${sectionId}"]`);
-      if (navLink.classList.contains('nav-active')) {
-      navLink.classList.remove('nav-active'); }
+      navLink.classList.remove('nav-active'); 
         }
     });
 });
