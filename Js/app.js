@@ -43,9 +43,6 @@ const sectionId = aLink.getAttribute('href');
   });
 // Add event listener to window to display viewport
 // Loop through each section in the viewport
-document.querySelectorAll('.nav-active').forEach((link) => {
-  link.classList.remove('nav-active');
-});
 
 window.addEventListener('scroll', () => {
 
