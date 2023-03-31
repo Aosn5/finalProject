@@ -35,8 +35,8 @@ const sectionId = aLink.getAttribute('href');
       {behavior: "smooth"});
            
 // Remove & add the 'nav-active' class 
-    aLinks.forEach((link) => link.classList.remove('nav-active'));
-      aLink.classList.add('nav-active'); 
+   aLinks.forEach((link) => link.classList.remove('nav-active')); 
+   aLink.classList.add('nav-active'); 
 // Prevent the default
       ev.preventDefault(); 
     });
@@ -53,11 +53,18 @@ window.addEventListener('scroll', () => {
         sections[i].getBoundingClientRect().bottom >= 150
     ){
         sections[i].classList.add('your-active-class');
-        aLinks[i].classList.add('nav-active');
+       //Add active state and section to corresponding nav link
+        const sectionId = `#section${i + 1}`;
+        const navLink = document.querySelector(`a[href="${sectionId}"]`);
+        navLink.classList.add('nav-active');
     } 
     else {
-        sections[i].classList.remove('your-active-class');
-        aLinks[i].classList.remove('nav-active');
+      sections[i].classList.remove('your-active-class');
+      //Remove active state and section to corresponding nav link
+      const sectionId = `#section${i + 1}`;
+      const navLink = document.querySelector(`a[href="${sectionId}"]`);
+      if (navLink.classList.contains('nav-active')) {
+      navLink.classList.remove('nav-active'); }
         }
     });
 });
