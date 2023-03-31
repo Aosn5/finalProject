@@ -43,6 +43,9 @@ const sectionId = aLink.getAttribute('href');
   });
 // Add event listener to window to display viewport
 // Loop through each section in the viewport
+document.querySelectorAll('.nav-active').forEach((link) => {
+  link.classList.remove('nav-active');
+});
 
 window.addEventListener('scroll', () => {
 
@@ -52,12 +55,11 @@ window.addEventListener('scroll', () => {
         sections[i].getBoundingClientRect().top <= 150 &&
         sections[i].getBoundingClientRect().bottom >= 150
     ){
-        
+      sections[i].classList.add('your-active-class');
        //Add active state and 
        document.querySelectorAll('.nav-active').forEach((link) => {
         link.classList.remove('nav-active');
      });
-     sections[i].classList.add('your-active-class');
      //section to corresponding nav link
         const sectionId = `#section${i + 1}`;
         const navLink = document.querySelector(`a[href="${sectionId}"]`);
